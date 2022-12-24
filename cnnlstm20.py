@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
 import pickle
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from scipy import stats
 import tensorflow as tf
-import seaborn as sns
-from pylab import rcParams
-from sklearn import metrics
+# import seaborn as sns
+# from pylab import rcParams
+# from sklearn import metrics
 from sklearn.model_selection import train_test_split
 
 
@@ -16,8 +16,11 @@ from sklearn.model_selection import train_test_split
 
 RANDOM_SEED = 42
 
-columns = ['user','activity','timestamp', 'x-axis', 'y-axis', 'z-axis']
-df = pd.read_csv('WISDM_ar_v1.1_raw.txt', header = None, names = columns)
+columns = ['user', 'activity', 'timestamp', 'x-axis', 'y-axis', 'z-axis']
+#df = pd.read_csv('WISDM_ar_v1.1_raw.txt', header=None, names=columns)
+df = pd.read_csv('WISDM_ar_v1.1_raw.txt',names=columns, encoding="utf-8",error_bad_lines=False)
+
+
 df = df.dropna()
 
 df.head()
@@ -36,8 +39,8 @@ for i in range(0, len(df) - N_TIME_STEPS, step):
     segments.append([xs, ys, zs])
     labels.append(label)
 
-reshaped_segments = np.asarray(segments, dtype= np.float32).reshape(-1, N_TIME_STEPS, N_FEATURES)
-labels = np.asarray(pd.get_dummies(labels), dtype = np.float32)
+reshaped_segments = np.asarray(segments, dtype=np.float32).reshape(-1, N_TIME_STEPS, N_FEATURES)
+labels = np.asarray(pd.get_dummies(labels), dtype=np.float32)
 
 X_train, X_test, y_train, y_test = train_test_split(
         reshaped_segments, labels, test_size=0.2, random_state=RANDOM_SEED)

@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
 import pickle
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from scipy import stats
 import tensorflow as tf
-import seaborn as sns
-from pylab import rcParams
-from sklearn import metrics
+# import seaborn as sns
+# from pylab import rcParams
+# from sklearn import metrics
 from sklearn.model_selection import train_test_split
 
 
@@ -17,7 +17,8 @@ from sklearn.model_selection import train_test_split
 RANDOM_SEED = 42
 
 columns = ['user','activity','timestamp', 'x-axis', 'y-axis', 'z-axis']
-df = pd.read_csv('data/WISDM_ar_v1.1_raw.txt', header = None, names = columns)
+#df = pd.read_csv('WISDM_ar_v1.1_raw.txt', header = None, names = columns)
+df = pd.read_csv("WISDM_ar_v1.1_raw.txt", names=columns,encoding="utf-8",error_bad_lines=False)
 df = df.dropna()
 
 df.head()
