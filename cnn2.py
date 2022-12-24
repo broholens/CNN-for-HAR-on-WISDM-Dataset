@@ -9,6 +9,7 @@ import tensorflow as tf
 # from sklearn import metrics
 from sklearn.model_selection import train_test_split
 
+# python version=3.6.8
 
 RANDOM_SEED = 42
 columns = ['user', 'activity', 'timestamp', 'x-axis', 'y-axis', 'z-axis']
